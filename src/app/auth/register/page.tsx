@@ -52,7 +52,7 @@ export default function RegisterPage() {
                   <RadioGroup value={userType} onValueChange={setUserType} className="grid grid-cols-3 gap-4">
                     <Label
                       htmlFor="farmer"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-agro-primary"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-green-400 "
                     >
                       <RadioGroupItem value="farmer" id="farmer" className="sr-only" />
                       <Leaf className="mb-3 h-6 w-6" />
@@ -60,7 +60,7 @@ export default function RegisterPage() {
                     </Label>
                     <Label
                       htmlFor="buyer"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-agro-primary"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-green-400 "
                     >
                       <RadioGroupItem value="buyer" id="buyer" className="sr-only" />
                       <ShoppingCart className="mb-3 h-6 w-6" />
@@ -68,7 +68,7 @@ export default function RegisterPage() {
                     </Label>
                     <Label
                       htmlFor="transporter"
-                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-agro-primary"
+                      className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-green-400 "
                     >
                       <RadioGroupItem value="transporter" id="transporter" className="sr-only" />
                       <Truck className="mb-3 h-6 w-6" />
