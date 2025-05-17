@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider } from "@/context/sidebarContext";
-import { AuthProvider } from "@/context/authContext";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { UserProvider } from "@/context/userContext";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Agro Connect",
-  description: "An AI-powered platform for farmers and buyers",
-};
+  description: "Connect farmers, buyers, and transporters in a seamless agricultural marketplace",
+}
 
 export default function RootLayout({
   children,
@@ -29,11 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-     <SidebarProvider>
-      <AuthProvider>
-      {children}
-      </AuthProvider>
-      </SidebarProvider>
+         <UserProvider>
+          <SidebarProvider>
+            <ThemeProvider attribute="class"  defaultTheme="system" enableSystem disableTransitionOnChange>
+              {children}
+            </ThemeProvider>
+          </SidebarProvider>
+        </UserProvider>
       </body>
     </html>
   );

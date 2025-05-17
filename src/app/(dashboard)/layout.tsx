@@ -1,7 +1,8 @@
 "use client"
+import { RouteGuard } from "@/components/auth/route-guard"
 import { Header } from "@/components/haeder"
-import Sidebar from "@/components/sidebar"
-import { AuthProvider } from "@/context/authContext"
+import { Sidebar } from "@/components/sidebar"
+
 import { SidebarProvider } from "@/context/sidebarContext"
 
 import type React from "react"
@@ -28,7 +29,7 @@ export default function DashboardLayout({
   }, [])
 
   return (
-    <AuthProvider>
+    <RouteGuard>
       <SidebarProvider>
         <div className="min-h-screen bg-background">
           <Sidebar onCollapseChange={setIsSidebarCollapsed} />
@@ -42,6 +43,6 @@ export default function DashboardLayout({
           </div>
         </div>
       </SidebarProvider>
-    </AuthProvider>
+      </RouteGuard>
   )
 }
