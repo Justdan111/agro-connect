@@ -39,7 +39,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button asChild size="lg" className="bg-agro-primary hover:bg-green-400 ">
+                <Button asChild size="lg" className="bg-agro-primary hover:bg-green-400 text-green-400 hover:text-white">
                   <Link href="/auth/register">
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
