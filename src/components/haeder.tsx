@@ -1,74 +1,91 @@
 "use client"
-import { usePathname, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
 
-import { Menu, Bell, UserCircle } from "lucide-react"
-import React from "react"
-import { useAuth } from "@/context/authContext"
+import { Bell, MessageSquare, Moon, Sun, User } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useTheme } from "next-themes"
+import { Badge } from "@/components/ui/badge"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+
+import { Menu } from "lucide-react"
 import { useSidebar } from "@/context/sidebarContext"
+import { useUser } from "@/context/userContext"
 
 export function Header() {
-  const { user } = useAuth()
-  const { toggle } = useSidebar()
-  const pathname = usePathname()
-  const router = useRouter()
-  
-  // Get page title based on current route
-  const getPageTitle = () => {
-    // Extract the main section from the URL
-    const path = pathname.split('/').filter(Boolean)
-    
-    if (path.length === 0) return "Dashboard"
-    
-    // Handle dashboard pages
-    if (path[0] === 'dashboard') {
-      const userType = path[1]
-      if (userType) {
-        return `${userType.charAt(0).toUpperCase() + userType.slice(1)} Dashboard`
-      }
-      return "Dashboard"
-    }
-    
-    // Handle other pages by converting path to title case
-    const section = path[0]
-    return section
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
-  }
+  const { setTheme, theme } = useTheme()
+  const { user, logout } = useUser()
+  const { toggle, isCollapsed } = useSidebar()
 
-  const pageTitle = getPageTitle()
-  
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center bg-white border-b px-4 md:px-6">
-      <Button variant="ghost" size="icon" className="mr-2 lg:hidden" onClick={toggle}>
-        <Menu className="h-6 w-6" />
-        <span className="sr-only">Toggle sidebar</span>
-      </Button>
-      
-      <div className="flex-1">
-        <h1 className="text-lg font-semibold">{pageTitle}</h1>
-        {user && (
-          <p className="text-sm text-muted-foreground">
-            Logged in as {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
-          </p>
-        )}
-      </div>
-      
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon">
-          <Bell className="h-5 w-5" />
-          <span className="sr-only">Notifications</span>
+    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center">
+        <Button variant="ghost" size="icon" className="mr-2 lg:hidden" onClick={toggle}>
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Toggle menu</span>
         </Button>
-        
-        <Button 
-          variant="ghost" 
-          size="icon"
-          onClick={() => router.push('/profile')}
-        >
-          <UserCircle className="h-6 w-6" />
-          <span className="sr-only">Profile</span>
-        </Button>
+        <div className="flex-1" />
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon" className="text-muted-foreground">
+            <Bell className="h-5 w-5" />
+            <span className="sr-only">Notifications</span>
+          </Button>
+          <Button variant="ghost" size="icon" className="text-muted-foreground">
+            <MessageSquare className="h-5 w-5" />
+            <span className="sr-only">Messages</span>
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-muted-foreground">
+                {theme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-full">
+                {user ? (
+                  <Avatar>
+                    <AvatarFallback>
+                      {user.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                ) : (
+                  <User className="h-5 w-5" />
+                )}
+                <span className="sr-only">User menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel className="flex flex-col gap-1">
+                {user?.name}
+                <Badge variant="outline" className="w-fit capitalize">
+                  {user?.role}
+                </Badge>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   )

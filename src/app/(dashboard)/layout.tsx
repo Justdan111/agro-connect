@@ -2,7 +2,6 @@
 import { RouteGuard } from "@/components/auth/route-guard"
 import { Header } from "@/components/haeder"
 import { Sidebar } from "@/components/sidebar"
-
 import { SidebarProvider } from "@/context/sidebarContext"
 
 import type React from "react"

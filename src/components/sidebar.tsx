@@ -81,7 +81,7 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
   return (
     <>
       <div
-        className={cn("fixed inset-0 z-50 bg-background/80 backdrop-blur-sm lg:hidden", isOpen ? "block" : "hidden")}
+        className={cn("fixed inset-0 z-50 bg-white backdrop-blur-sm lg:hidden", isOpen ? "block" : "hidden")}
         onClick={toggle}
       />
       <div
@@ -144,18 +144,7 @@ const allNavItems: NavItem[] = [
     icon: LayoutDashboard,
     roles: ["farmer", "transporter", "buyer"],
   },
-  {
-    name: "Profile",
-    href: "/profile",
-    icon: UserCircle,
-    roles: ["farmer", "transporter", "buyer"],
-  },
-  {
-    name: "Settings",
-    href: "/settings",
-    icon: Settings,
-    roles: ["farmer", "transporter", "buyer"],
-  },
+ 
 
   // Farmer-specific navigation items
   {
@@ -239,6 +228,19 @@ const allNavItems: NavItem[] = [
     href: "/inventory",
     icon: Box,
     roles: ["buyer"],
+  },
+
+  {
+    name: "Profile",
+    href: "/profile",
+    icon: UserCircle,
+    roles: ["farmer", "transporter", "buyer"],
+  },
+  {
+    name: "Settings",
+    href: "/settings",
+    icon: Settings,
+    roles: ["farmer", "transporter", "buyer"],
   },
 ]
 
