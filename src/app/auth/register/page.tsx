@@ -173,7 +173,7 @@ export default function RegisterPage() {
               </>
             )}
 
-            <Button type="submit" className="w-full bg-agro-primary hover:bg-agro-primary/90" disabled={isLoading}>
+            <Button type="submit" className="w-full bg-green-400 hover:bg-agro-primary/90" disabled={isLoading}>
               {step < 3 ? "Continue" : isLoading ? "Creating Account..." : "Create Account"}
             </Button>
           </form>

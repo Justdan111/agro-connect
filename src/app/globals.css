@@ -49,7 +49,7 @@
   /* Revised colors with white background and reduced green */
   --background: #ffffff;
   --foreground: #333333;
-  --card: #6e8f41;
+  --card: #fff;
   --card-foreground: rgb(65, 151, 108);
   --popover: #ffffff;
   --popover-foreground: #333333;

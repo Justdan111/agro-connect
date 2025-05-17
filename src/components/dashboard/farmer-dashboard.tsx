@@ -36,10 +36,10 @@ export default function FarmerDashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard title="Total Revenue" value="$45,231.89" description="+20.1% from last month" icon={DollarSign} />
+        <StatCard title="Total Revenue" value="₦450,231.89" description="+20.1% from last month" icon={DollarSign} />
         <StatCard title="Active Crops" value="5" description="2 harvesting soon" icon={Leaf} />
         <StatCard title="Pending Orders" value="12" description="3 require action" icon={ShoppingCart} />
-        <StatCard title="Inventory Value" value="$12,234.00" description="15 tons in storage" icon={Package} />
+        <StatCard title="Inventory Value" value="₦120,234.00" description="15 tons in storage" icon={Package} />
       </div>
 
       <Tabs defaultValue="revenue" className="space-y-4">

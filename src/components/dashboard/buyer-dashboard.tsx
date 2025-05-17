@@ -92,7 +92,7 @@ export default function BuyerDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$38,450.25</div>
+            <div className="text-2xl font-bold">₦380,450.25</div>
             <p className="text-xs text-muted-foreground">+5.2% from last month</p>
           </CardContent>
         </Card>

@@ -150,7 +150,7 @@ export default function LoginPage() {
               </TabsContent>
             </Tabs>
 
-            <Button type="submit" className="w-full bg-agro-primary hover:bg-agro-primary/90" disabled={isLoading}>
+            <Button type="submit" className="w-full bg-green-300  hover:bg-green-200/90" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
