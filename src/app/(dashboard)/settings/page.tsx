@@ -311,7 +311,7 @@ export default function SettingsPage() {
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-medium">Pro Plan</h3>
-                    <p className="text-sm text-muted-foreground">$29.99/month, billed monthly</p>
+                    <p className="text-sm text-muted-foreground">₦15000/month, billed monthly</p>
                     <ul className="mt-2 space-y-1 text-sm">
                       <li>• Unlimited marketplace listings</li>
                       <li>• Advanced analytics</li>
@@ -361,9 +361,9 @@ export default function SettingsPage() {
             <CardContent>
               <div className="space-y-4">
                 {[
-                  { date: "May 1, 2025", amount: "$29.99", status: "Paid" },
-                  { date: "Apr 1, 2025", amount: "$29.99", status: "Paid" },
-                  { date: "Mar 1, 2025", amount: "$29.99", status: "Paid" },
+                  { date: "May 1, 2025", amount: "₦15000", status: "Paid" },
+                  { date: "Apr 1, 2025", amount: "₦15000", status: "Paid" },
+                  { date: "Mar 1, 2025", amount: "₦15000", status: "Paid" },
                 ].map((invoice, index) => (
                   <div key={index} className="flex items-center justify-between">
                     <div>

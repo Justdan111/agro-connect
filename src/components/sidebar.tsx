@@ -22,7 +22,6 @@ import {
   ReceiptText,
   Box,
   Flower2,
-  UserCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useUser } from "@/context/userContext"
@@ -230,12 +229,7 @@ const allNavItems: NavItem[] = [
     roles: ["buyer"],
   },
 
-  {
-    name: "Profile",
-    href: "/profile",
-    icon: UserCircle,
-    roles: ["farmer", "transporter", "buyer"],
-  },
+ 
   {
     name: "Settings",
     href: "/settings",
