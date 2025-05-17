@@ -18,7 +18,7 @@ export default function LandingPage() {
   if (!mounted) return null
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-agro-primary/10">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-agro-accent to-white py-20 lg:py-32">
         <div className="container px-4 md:px-6">
@@ -39,7 +39,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button asChild size="lg" className="bg-agro-primary hover:bg-agro-primary/90">
+                <Button asChild size="lg" className="bg-agro-primary hover:bg-green-400 ">
                   <Link href="/auth/register">
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -57,7 +57,7 @@ export default function LandingPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Image
-                src="/placeholder.svg?height=400&width=400"
+                src="/images/agroconnect.png?height=400&width=400"
                 width={400}
                 height={400}
                 alt="AgroConnect Platform"
@@ -180,7 +180,7 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button asChild size="lg" variant="secondary" className="bg-white text-agro-primary hover:bg-white/90">
+              <Button asChild size="lg" variant="secondary" className=" text-agro-primary hover:bg-white/90">
                 <Link href="/auth/register">Get Started Now</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
