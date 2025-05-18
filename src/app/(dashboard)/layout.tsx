@@ -20,10 +20,10 @@ export default function DashboardLayout({
       setIsSidebarCollapsed(e.detail.isCollapsed)
     }
     
-    window.addEventListener('sidebarStateChange' as any, handleSidebarChange as EventListener)
+    window.addEventListener('sidebarStateChange' as string, handleSidebarChange as EventListener)
     
     return () => {
-      window.removeEventListener('sidebarStateChange' as any, handleSidebarChange as EventListener)
+      window.removeEventListener('sidebarStateChange' as string, handleSidebarChange as EventListener)
     }
   }, [])
 

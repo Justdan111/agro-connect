@@ -7,7 +7,7 @@ interface ChartCardProps {
   title: string
   description: string
   config: Record<string, { label: string; color: string }>
-  children: ReactElement<unknown, string | JSXElementConstructor<any>>
+  children: ReactElement<unknown, string | JSXElementConstructor<unknown>>
 }
 
 export function ChartCard({ title, description, config, children }: ChartCardProps) {

@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-import { Badge, Calendar, Clock, Filter, MapPin, Package, Plus, Search,  Truck } from "lucide-react"
+import { Calendar, Clock, Filter, MapPin, Package, Plus, Search,  Truck } from "lucide-react"
 import Image from "next/image"
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
