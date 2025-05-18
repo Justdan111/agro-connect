@@ -46,19 +46,13 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
   const pathname = usePathname()
   const { isOpen, toggle } = useSidebar()
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [openSections, setOpenSections] = useState<{[key: string]: boolean}>({})
+  const [, setOpenSections] = useState<{[key: string]: boolean}>({})
   const { user } = useUser() // Get current user data including role
   const userRole = user?.role || "guest" // Default to guest if no role is set
 
   // Filter navigation items based on user role
   const filteredNavItems = getNavItemsByRole(userRole)
 
-  const toggleSection = (name: string) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [name]: !prev[name]
-    }))
-  }
 
   const toggleCollapse = () => {
     const newCollapsedState = !isCollapsed

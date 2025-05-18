@@ -21,7 +21,7 @@ import { useUser } from "@/context/userContext"
 export function Header() {
   const { setTheme, theme } = useTheme()
   const { user, logout } = useUser()
-  const { toggle, isCollapsed } = useSidebar()
+  const { toggle } = useSidebar()
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

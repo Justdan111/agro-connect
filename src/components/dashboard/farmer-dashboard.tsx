@@ -25,7 +25,7 @@ export default function FarmerDashboard() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Farmer Dashboard</h1>
-          <p className="text-muted-foreground">Welcome back! Here's an overview of your farm's performance.</p>
+          <p className="text-muted-foreground">Welcome back! Here&apos;s  an overview of your farm&apos;s  performance.</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon">
