@@ -109,8 +109,8 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center rounded-md text-sm font-medium hover:bg-agro-accent text-agro-text",
-                      pathname === item.href ? "bg-agro-accent text-agro-primary" : "text-agro-text",
+                      "flex items-center rounded-md text-sm font-medium hover:bg-green-300 text-agro-text",
+                      pathname === item.href ? "bg-green-400 text-agro-primary" : "text-agro-text",
                       isCollapsed ? "px-2 py-2 justify-center" : "px-3 py-2",
                     )}
                     title={isCollapsed ? item.name : ""}

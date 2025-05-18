@@ -1,6 +1,6 @@
 "use client"
 
-import { Bell, MessageSquare, Moon, Sun, User } from "lucide-react"
+import { Bell, MessageSquare, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -10,16 +10,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useTheme } from "next-themes"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import { Menu } from "lucide-react"
 import { useSidebar } from "@/context/sidebarContext"
 import { useUser } from "@/context/userContext"
 
 export function Header() {
-  const { setTheme, theme } = useTheme()
   const { user, logout } = useUser()
   const { toggle } = useSidebar()
 
@@ -40,7 +38,7 @@ export function Header() {
             <MessageSquare className="h-5 w-5" />
             <span className="sr-only">Messages</span>
           </Button>
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="text-muted-foreground">
                 {theme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
@@ -52,12 +50,13 @@ export function Header() {
               <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
                 {user ? (
                   <Avatar>
+                    <AvatarImage src="/images/avatar.webp" alt="Profile" />
                     <AvatarFallback>
                       {user.name
                         .split(" ")

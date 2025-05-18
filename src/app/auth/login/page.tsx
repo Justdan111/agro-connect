@@ -120,6 +120,7 @@ export default function LoginPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      className="text-black"
                     />
                   </div>
                   <div className="flex items-center space-x-2">

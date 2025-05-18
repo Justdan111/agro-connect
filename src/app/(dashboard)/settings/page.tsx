@@ -48,7 +48,7 @@ export default function SettingsPage() {
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex flex-col items-center gap-4">
                   <Avatar className="h-24 w-24">
-                    <AvatarImage src="/placeholder.svg" alt="Profile" />
+                    <AvatarImage src="/images/avatar.webp" alt="Profile" />
                     <AvatarFallback>JD</AvatarFallback>
                   </Avatar>
                   <Button variant="outline" size="sm">
