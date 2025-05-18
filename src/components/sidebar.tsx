@@ -88,7 +88,7 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
         )}
       >
         <div className="flex h-14 items-center px-4">
-          {!isCollapsed && <span className="text-xl font-bold text-agro-primary">AgroConnect</span>}
+          {!isCollapsed && <span className="text-2xl font-bold text-green-500">AgroConnect</span>}
           <Button variant="ghost" size="icon" className="ml-auto lg:hidden" onClick={toggle}>
             <Menu className="h-5 w-5" />
           </Button>
