@@ -18,7 +18,7 @@ export default function LandingPage() {
   if (!mounted) return null
 
   return (
-    <div className="flex min-h-screen flex-col bg-agro-primary/10">
+    <div className="flex min-h-screen flex-col bg-green-50">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-agro-accent to-white py-20 lg:py-32">
         <div className="container px-4 md:px-6">
@@ -170,7 +170,7 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className="py-12 md:py-24 bg-agro-primary">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center text-white">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center ">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Ready to Transform Your Agricultural Business?
@@ -183,7 +183,7 @@ export default function LandingPage() {
               <Button asChild size="lg" variant="secondary" className=" text-agro-primary hover:bg-white/90">
                 <Link href="/auth/register">Get Started Now</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
+              <Button asChild variant="outline" size="lg" className="border-white  hover:bg-white/10">
                 <Link href="/about">Learn More</Link>
               </Button>
             </div>

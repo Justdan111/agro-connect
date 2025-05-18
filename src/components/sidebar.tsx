@@ -180,19 +180,19 @@ const allNavItems: NavItem[] = [
   // Transporter-specific navigation items
   {
     name: "Available Jobs",
-    href: "/logistics/available-jobs",
+    href: "/available-jobs",
     icon: ShoppingCart,
     roles: ["transporter"],
   },
   {
     name: "My Shipments",
-    href: "/logistics/shipments",
+    href: "/shipments",
     icon: Truck,
     roles: ["transporter"],
   },
   {
     name: "Route Planning",
-    href: "/logistics/routes",
+    href: "/routes",
     icon: Route,
     roles: ["transporter"],
   },
