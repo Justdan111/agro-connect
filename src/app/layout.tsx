@@ -4,6 +4,7 @@ import "./globals.css";
 import { SidebarProvider } from "@/context/sidebarContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { UserProvider } from "@/context/userContext";
+import { CartProvider } from "@/context/cartContext";
 
 
 const geistSans = Geist({
@@ -33,9 +34,11 @@ export default function RootLayout({
       >
          <UserProvider>
           <SidebarProvider>
+          <CartProvider>
             <ThemeProvider attribute="class"  defaultTheme="light" enableSystem disableTransitionOnChange>
               {children}
             </ThemeProvider>
+            </CartProvider>
           </SidebarProvider>
         </UserProvider>
       </body>
