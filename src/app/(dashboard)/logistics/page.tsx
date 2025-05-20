@@ -1,15 +1,17 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { CardDescription } from "@/components/ui/card"
 
-import { Calendar, Clock, Filter, MapPin, Package, Plus, Search,  Truck } from "lucide-react"
+import { useState } from "react"
+import { Plus, Truck, Calendar, MapPin, Search, Filter, Package, Clock } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
-import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { NewShipmentDialog } from "@/components/logistics/new-shipment-dialog"
+import { AddTransporterDialog } from "@/components/logistics/add-transporter-dialog"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 // Dummy data for shipments
 const shipments = [
@@ -96,7 +98,8 @@ const transporters = [
 
 export default function LogisticsPage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [statusFilter, setStatusFilter] = useState<string>("all")
+  const [statusFilter] = useState<string>("all")
+
 
   const filteredShipments = shipments.filter((shipment) => {
     const matchesSearch =
@@ -111,6 +114,8 @@ export default function LogisticsPage() {
     return matchesSearch && matchesStatus
   })
 
+  
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -119,10 +124,7 @@ export default function LogisticsPage() {
           <p className="text-muted-foreground">Manage your shipments and transportation needs.</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            New Shipment
-          </Button>
+          <NewShipmentDialog />
         </div>
       </div>
 
@@ -144,19 +146,7 @@ export default function LogisticsPage() {
               />
             </div>
             <div className="flex items-center gap-2">
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Filter by status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Statuses</SelectItem>
-                  <SelectItem value="scheduled">Scheduled</SelectItem>
-                  <SelectItem value="in transit">In Transit</SelectItem>
-                  <SelectItem value="delivered">Delivered</SelectItem>
-                  <SelectItem value="cancelled">Cancelled</SelectItem>
-                </SelectContent>
-              </Select>
-              <Button variant="outline" size="icon">
+              <Button onClick={() => console.log("Filter by status")}>
                 <Filter className="h-4 w-4" />
                 <span className="sr-only">More filters</span>
               </Button>
@@ -169,7 +159,7 @@ export default function LogisticsPage() {
               <CardDescription>View and manage your product shipments</CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
+            <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>ID</TableHead>
@@ -217,7 +207,7 @@ export default function LogisticsPage() {
                   ))}
                 </TableBody>
               </Table>
-            </CardContent>
+              </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="transporters" className="space-y-4">
@@ -226,10 +216,7 @@ export default function LogisticsPage() {
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input placeholder="Search transporters..." className="pl-8" />
             </div>
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              Add Transporter
-            </Button>
+            <AddTransporterDialog />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {transporters.map((transporter) => (
@@ -270,8 +257,14 @@ export default function LogisticsPage() {
                     </div>
                   </div>
                   <div className="mt-4 flex gap-2">
-                    <Button className="flex-1">Contact</Button>
-                    <Button variant="outline" className="flex-1">
+                    <Button className="flex-1" onClick={() => console.log("Contact Transporter")}>
+                      Contact
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="flex-1"
+                      onClick={() => console.log("View Transporter Details")}
+                    >
                       View Details
                     </Button>
                   </div>
@@ -295,19 +288,10 @@ export default function LogisticsPage() {
                     Select a shipment to view its real-time location and status.
                   </p>
                   <div className="mt-4 flex gap-2 justify-center">
-                    <Select>
-                      <SelectTrigger className="w-[250px]">
-                        <SelectValue placeholder="Select a shipment" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {shipments.map((shipment) => (
-                          <SelectItem key={shipment.id} value={shipment.id}>
-                            {shipment.id} - {shipment.product}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <Button variant="outline">Track</Button>
+                    {/* Select component goes here */}
+                    <Button variant="outline" onClick={() => console.log("Track Shipment")}>
+                      Track
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -378,19 +362,35 @@ export default function LogisticsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              <Button variant="outline" className="w-full justify-start">
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => console.log("Create New Shipment")}
+              >
                 <Plus className="mr-2 h-4 w-4" />
                 Create New Shipment
               </Button>
-              <Button variant="outline" className="w-full justify-start">
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => console.log("Find Transporters")}
+              >
                 <Truck className="mr-2 h-4 w-4" />
                 Find Transporters
               </Button>
-              <Button variant="outline" className="w-full justify-start">
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => console.log("Manage Inventory")}
+              >
                 <Package className="mr-2 h-4 w-4" />
                 Manage Inventory
               </Button>
-              <Button variant="outline" className="w-full justify-start">
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => console.log("View Delivery History")}
+              >
                 <Clock className="mr-2 h-4 w-4" />
                 View Delivery History
               </Button>
