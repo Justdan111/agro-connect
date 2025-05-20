@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Minus, Plus, ShoppingCart, Trash2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 import Link from "next/link"
@@ -35,7 +36,7 @@ export default function CartPage() {
           <CardContent className="pt-6 flex flex-col items-center">
             <ShoppingCart className="h-16 w-16 text-muted-foreground mb-4" />
             <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
-            <p className="text-muted-foreground mb-6">Looks like you haven't added any products to your cart yet.</p>
+            <p className="text-muted-foreground mb-6">Looks like you haven&apos;t added any products to your cart yet.</p>
             <Link href="/marketplace">
               <Button>
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -66,10 +67,12 @@ export default function CartPage() {
             <Card key={item.id}>
               <div className="flex p-4">
                 <div className="w-24 h-24 mr-4">
-                  <img
-                    src={item.image || "/placeholder.svg?height=100&width=100"}
+                  <Image
+                    src={item.image || '/placeholder.jpg'}
                     alt={item.name}
                     className="w-full h-full object-cover rounded-md"
+                    width={96}
+                    height={96}
                   />
                 </div>
                 <div className="flex-1">
