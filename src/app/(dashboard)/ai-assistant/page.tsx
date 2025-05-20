@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { AlertCircle, Brain, Camera, Leaf, Loader2, Mic, PlusCircle, Send, Sparkles } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 interface Message {
   id: string
@@ -295,7 +296,7 @@ export default function AIAssistantPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image src="/placeholder.svg?height=40&width=40" width={40} height={40} alt="Weather icon" />
+                  <Image src="/images/sunny.webp?height=40&width=40" width={40} height={40} alt="Weather icon" />
                   <div>
                     <h3 className="text-sm font-medium">Today</h3>
                     <p className="text-xs text-muted-foreground">Sunny, 24°C</p>
@@ -305,7 +306,7 @@ export default function AIAssistantPage() {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Image src="/placeholder.svg?height=40&width=40" width={40} height={40} alt="Weather icon" />
+                  <Image src="/images/cloudy.png?height=40&width=40" width={40} height={40} alt="Weather icon" />
                   <div>
                     <h3 className="text-sm font-medium">Tomorrow</h3>
                     <p className="text-xs text-muted-foreground">Partly Cloudy, 22°C</p>
@@ -313,9 +314,11 @@ export default function AIAssistantPage() {
                 </div>
                 <p className="text-sm">Good for fieldwork</p>
               </div>
+              <Link href={"weather"} >
               <Button variant="outline" className="w-full">
                 View 7-Day Forecast
               </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
