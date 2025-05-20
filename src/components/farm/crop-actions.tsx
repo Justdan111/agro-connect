@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Eye, Edit, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ImageUpload } from "@/components/ui/image-upload"
 import { toast } from "sonner"
-
+import Image from "next/image"
 
 interface Crop {
   id: string
@@ -29,19 +28,18 @@ interface CropActionsProps {
   crop: Crop
   onUpdate: (updatedCrop: Crop) => void
   onDelete: (id: string) => void
-  
 }
 
 export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
- 
   const [viewCrop, setViewCrop] = useState<Crop | null>(null)
   const [editCrop, setEditCrop] = useState<Crop | null>(null)
 
-  const handleUpdateCrop = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!editCrop) return;
-  
-    const formData = new FormData(e.currentTarget);
+  const handleUpdateCrop = async (e: React.FormEvent<Element>) => {
+    e.preventDefault()
+    if (!editCrop) return
+    
+    const form = e.currentTarget as HTMLFormElement
+    const formData = new FormData(form)
 
     const updatedCrop: Crop = {
       ...editCrop,
@@ -68,6 +66,12 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
     })
   }
 
+  const handleImageChange = (imageUrl: string | null) => {
+    if (!editCrop) return
+    const updatedCrop = { ...editCrop, image: imageUrl || undefined }
+    onUpdate(updatedCrop)
+  }
+
   return (
     <div className="flex justify-end space-x-2">
       {/* View Crop Dialog */}
@@ -89,10 +93,12 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
         <div className="grid grid-cols-2 gap-4">
           {crop.image && (
             <div className="col-span-2 flex justify-center">
-              <img
-                src={crop.image || "/placeholder.svg"}
+              <Image
+                src={crop.image}
                 alt={crop.name}
-                className="w-32 h-32 object-cover rounded-md"
+                width={128}
+                height={128}
+                className="object-cover rounded-md"
               />
             </div>
           )}
@@ -110,9 +116,7 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
           </div>
           <div>
             <p className="font-semibold">Quantity:</p>
-            <p>
-              {crop.quantity} {crop.unit}
-            </p>
+            <p>{crop.quantity} {crop.unit}</p>
           </div>
           <div>
             <p className="font-semibold">Planting Date:</p>
@@ -161,12 +165,24 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
 
             <div className="space-y-2">
               <Label htmlFor="plantingDate">Planting Date</Label>
-              <Input id="plantingDate" name="plantingDate" type="date" defaultValue={editCrop.plantingDate} required />
+              <Input 
+                id="plantingDate" 
+                name="plantingDate" 
+                type="date" 
+                defaultValue={editCrop.plantingDate} 
+                required 
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="harvestDate">Expected Harvest Date</Label>
-              <Input id="harvestDate" name="harvestDate" type="date" defaultValue={editCrop.harvestDate} required />
+              <Input 
+                id="harvestDate" 
+                name="harvestDate" 
+                type="date" 
+                defaultValue={editCrop.harvestDate} 
+                required 
+              />
             </div>
 
             <div className="space-y-2">
@@ -187,7 +203,14 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
             <div className="space-y-2">
               <Label htmlFor="quantity">Quantity</Label>
               <div className="flex space-x-2">
-                <Input id="quantity" name="quantity" type="number" min="0" defaultValue={editCrop.quantity} required />
+                <Input 
+                  id="quantity" 
+                  name="quantity" 
+                  type="number" 
+                  min="0" 
+                  defaultValue={editCrop.quantity} 
+                  required 
+                />
                 <Select name="unit" defaultValue={editCrop.unit}>
                   <SelectTrigger className="w-24">
                     <SelectValue placeholder="Unit" />
@@ -202,10 +225,12 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
             </div>
 
             <div className="col-span-2 space-y-2">
-              <Label htmlFor="cropImage">Crop Image</Label>
-              <ImageUpload defaultImage={editCrop.image} />
-            </div>
-          </div>
+          <Label htmlFor="cropImage">Crop Image</Label>
+          <ImageUpload defaultImage={editCrop.image} urls={[]} onChange={function (urls: string[]): void {
+                throw new Error("Function not implemented.")
+              } } maxFiles={0} />
+        </div>
+      </div>
         )}
       </DialogForm>
 

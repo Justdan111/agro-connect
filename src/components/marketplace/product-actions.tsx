@@ -5,6 +5,7 @@ import { Eye, ShoppingCart, Plus, Minus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DialogForm } from "@/components/ui/dialog-form"
 import { toast } from "sonner"
+import Image from "next/image"
 
 
 interface Product {
@@ -20,14 +21,6 @@ interface Product {
   description?: string
 }
 
-interface CartItem {
-  id: string
-  name: string
-  price: number
-  quantity: number
-  image?: string
-  seller: string
-}
 
 interface ProductActionsProps {
   product: Product
@@ -86,7 +79,7 @@ export function ProductActions({ product, onAddToCart, viewMode = "grid" }: Prod
         {viewProduct && (
           <div className="space-y-4">
             <div className="aspect-video relative overflow-hidden rounded-md">
-              <img
+              <Image
                 src={viewProduct.image || "/placeholder.svg?height=300&width=600"}
                 alt={viewProduct.name}
                 className="object-cover w-full h-full"

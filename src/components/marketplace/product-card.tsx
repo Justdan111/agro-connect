@@ -8,10 +8,11 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingCart, Heart, Star, Truck, Clock, Leaf, TrendingDown, Award } from "lucide-react"
+import { Product } from "@/data/market-place-data"
 
 interface ProductCardProps {
-  product: any
-  onAddToCart: (product: any, quantity: number) => void
+  product: Product
+  onAddToCart: (product: Product, quantity: number) => void
   viewMode: "grid" | "list"
 }
 

@@ -4,12 +4,14 @@ import type React from "react"
 import { useRef } from "react"
 import { Upload, X } from "lucide-react"
 import { toast } from "sonner"
+import Image from "next/image"
 
 interface ImageUploadProps {
   urls: string[]
   onChange: (urls: string[]) => void
   maxFiles: number
   className?: string
+  defaultImage?: string
 }
 
 export function ImageUpload({ urls, onChange, maxFiles, className = "" }: ImageUploadProps) {
@@ -42,7 +44,7 @@ export function ImageUpload({ urls, onChange, maxFiles, className = "" }: ImageU
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {urls.map((url, index) => (
           <div key={index} className="relative aspect-square">
-            <img 
+            <Image
               src={url} 
               alt={`Image ${index + 1}`} 
               className="w-full h-full object-cover rounded-md"

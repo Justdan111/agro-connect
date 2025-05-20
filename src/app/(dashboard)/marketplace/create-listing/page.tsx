@@ -17,12 +17,10 @@ import { ImageUpload } from "@/components/ui/image-upload"
 
 import { ArrowLeft, Save, Loader2 } from "lucide-react"
 import Link from "next/link"
-import { useUser } from "@/context/userContext"
 import marketplaceData from "@/data/market-place-data"
 
 export default function CreateListingPage() {
   const router = useRouter()
-  const { user } = useUser()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [activeTab, setActiveTab] = useState("details")
   const [formData, setFormData] = useState({
@@ -174,7 +172,7 @@ export default function CreateListingPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Pricing & Inventory</CardTitle>
-                  <CardDescription>Set your product's price and inventory details.</CardDescription>
+                  <CardDescription>Set your product&apos;s price and inventory details.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">

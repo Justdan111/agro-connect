@@ -34,11 +34,11 @@ export function TaskActions({ task, onUpdate, onDelete }: TaskActionsProps) {
   const [viewTask, setViewTask] = useState<Task | null>(null)
   const [editTask, setEditTask] = useState<Task | null>(null)
 
-  const handleUpdateTask = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateTask = (e: React.FormEvent<Element>) => {
     e.preventDefault()
     if (!editTask) return
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget as HTMLFormElement)
 
     const updatedTask: Task = {
       ...editTask,
@@ -52,16 +52,14 @@ export function TaskActions({ task, onUpdate, onDelete }: TaskActionsProps) {
 
     onUpdate(updatedTask)
     setEditTask(null)
-    toast({
-      title: "Task Updated",
+    toast.success("Task Updated", {
       description: `${updatedTask.title} has been updated successfully.`,
     })
   }
 
   const handleDeleteTask = () => {
     onDelete(task.id)
-    toast({
-      title: "Task Deleted",
+    toast.success("Task Deleted", {
       description: "The task has been deleted successfully.",
     })
   }
@@ -72,7 +70,7 @@ export function TaskActions({ task, onUpdate, onDelete }: TaskActionsProps) {
       <DialogForm
         title="Task Details"
         trigger={
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => setViewTask(task)}>
             <Eye className="h-4 w-4" />
           </Button>
         }

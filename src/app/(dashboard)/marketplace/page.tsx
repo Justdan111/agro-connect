@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ShoppingCart, Filter, Search, Star, TrendingUp, PlusCircle } from "lucide-react"
+import { ShoppingCart, Filter, Search, Star, PlusCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -14,14 +14,13 @@ import { ProductCard } from "@/components/marketplace/product-card"
 import Link from "next/link"
 import { useCart, CartItem } from "@/context/cartContext"
 import { useUser } from "@/context/userContext"
-import marketplaceData, { getFeaturedProducts, getProductsByCategory } from "@/data/market-place-data"
+import marketplaceData, { getProductsByCategory, Product } from "@/data/market-place-data"
 
 
 export default function MarketplacePage() {
   const { addItem, totalItems } = useCart()
   const { user } = useUser()
   const [products, setProducts] = useState(marketplaceData.products)
-  const [featuredProducts, setFeaturedProducts] = useState(getFeaturedProducts())
   const [searchTerm, setSearchTerm] = useState("")
   const [categoryFilter, setCategoryFilter] = useState<string>("all")
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000])
@@ -62,7 +61,7 @@ export default function MarketplacePage() {
   })
 
   // Add product to cart
-  const handleAddToCart = (product: any, quantity: number) => {
+  const handleAddToCart = (product: Product, quantity: number) => {
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
