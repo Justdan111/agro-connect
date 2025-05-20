@@ -72,7 +72,7 @@ const transporters = [
     reviews: 56,
     vehicleTypes: ["Truck", "Van", "Refrigerated"],
     serviceArea: "150 km radius",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/images/transporter.webp?height=100&width=100",
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ const transporters = [
     reviews: 42,
     vehicleTypes: ["Truck", "Trailer"],
     serviceArea: "200 km radius",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/images/transporter.webp?height=100&width=100",
   },
   {
     id: 3,
@@ -90,7 +90,7 @@ const transporters = [
     reviews: 38,
     vehicleTypes: ["Truck", "Refrigerated", "Specialized"],
     serviceArea: "100 km radius",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/images/transporter.webp?height=100&width=100",
   },
 ]
 

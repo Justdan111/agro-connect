@@ -1,19 +1,22 @@
 "use client"
 
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
-
-import { AlertCircle, CalendarIcon, ChevronRight, Leaf, Plus, RefreshCw, Search, Sprout } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Progress } from "@/components/ui/progress"
+import { AlertCircle, Calendar, ChevronRight, Leaf, RefreshCw, Search, Sprout } from "lucide-react"
+import { AddCropForm, CropData } from "@/components/farm/add-crop-form"
+import { AddTaskForm, TaskData } from "@/components/farm/add-task-form"
+import { useState } from "react"
+
+// Import the form components
 
 
-// Dummy data for crops
-const crops = [
+// Initial dummy data for crops
+const initialCrops = [
   {
     id: 1,
     name: "Corn",
@@ -24,6 +27,9 @@ const crops = [
     status: "Growing",
     progress: 65,
     healthStatus: "Good",
+    type: "grain",
+    quantity: 1000,
+    unit: "kg",
   },
   {
     id: 2,
@@ -35,6 +41,9 @@ const crops = [
     status: "Growing",
     progress: 75,
     healthStatus: "Warning",
+    type: "grain",
+    quantity: 800,
+    unit: "kg",
   },
   {
     id: 3,
@@ -46,6 +55,9 @@ const crops = [
     status: "Growing",
     progress: 45,
     healthStatus: "Good",
+    type: "legume",
+    quantity: 600,
+    unit: "kg",
   },
   {
     id: 4,
@@ -57,47 +69,60 @@ const crops = [
     status: "Growing",
     progress: 40,
     healthStatus: "Good",
+    type: "grain",
+    quantity: 1200,
+    unit: "kg",
   },
 ]
 
-// Dummy data for tasks
-const tasks = [
+// Initial dummy data for tasks
+const initialTasks = [
   {
     id: 1,
     title: "Apply fertilizer to Field A",
+    description: "Apply nitrogen-rich fertilizer to corn crop",
     crop: "Corn",
     dueDate: "2025-05-20",
     status: "Pending",
     priority: "High",
+    assignedTo: "John Smith",
   },
   {
     id: 2,
     title: "Inspect Field B for pests",
+    description: "Check wheat crop for aphids and other pests",
     crop: "Wheat",
     dueDate: "2025-05-18",
     status: "Completed",
     priority: "Medium",
+    assignedTo: "Jane Doe",
   },
   {
     id: 3,
     title: "Irrigation maintenance",
+    description: "Check and repair irrigation systems",
     crop: "All",
     dueDate: "2025-05-25",
     status: "Pending",
     priority: "Medium",
+    assignedTo: "Mike Johnson",
   },
   {
     id: 4,
     title: "Prepare harvesting equipment",
+    description: "Service and prepare combine harvester",
     crop: "Corn",
     dueDate: "2025-06-01",
     status: "Pending",
     priority: "Low",
+    assignedTo: "Tom Wilson",
   },
 ]
 
 export default function FarmManagementPage() {
   const [searchTerm, setSearchTerm] = useState("")
+  const [crops, setCrops] = useState(initialCrops)
+  const [tasks, setTasks] = useState(initialTasks)
 
   const filteredCrops = crops.filter(
     (crop) =>
@@ -105,6 +130,22 @@ export default function FarmManagementPage() {
       crop.variety.toLowerCase().includes(searchTerm.toLowerCase()) ||
       crop.field.toLowerCase().includes(searchTerm.toLowerCase()),
   )
+
+  const handleAddCrop = (cropData: CropData) => {
+    const newCrop = {
+      ...cropData,
+      id: crops.length > 0 ? Math.max(...crops.map(c => c.id)) + 1 : 1,
+    }
+    setCrops([...crops, newCrop])
+  }
+
+  const handleAddTask = (taskData: TaskData) => {
+    const newTask = {
+      ...taskData,
+      id: tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1,
+    }
+    setTasks([...tasks, newTask])
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -114,10 +155,7 @@ export default function FarmManagementPage() {
           <p className="text-muted-foreground">Manage your crops, tasks, and farm resources.</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            Add New Crop
-          </Button>
+          <AddCropForm onSubmit={handleAddCrop} />
           <Button variant="outline" size="icon">
             <RefreshCw className="h-4 w-4" />
             <span className="sr-only">Refresh data</span>
@@ -131,6 +169,7 @@ export default function FarmManagementPage() {
           <TabsTrigger value="tasks">Tasks</TabsTrigger>
           <TabsTrigger value="calendar">Calendar</TabsTrigger>
         </TabsList>
+        
         <TabsContent value="crops" className="space-y-4">
           <div className="flex items-center gap-2">
             <div className="relative flex-1">
@@ -174,6 +213,10 @@ export default function FarmManagementPage() {
                       <span className="text-muted-foreground">Expected Harvest:</span>
                       <span>{new Date(crop.harvestDate).toLocaleDateString()}</span>
                     </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Quantity:</span>
+                      <span>{crop.quantity} {crop.unit}</span>
+                    </div>
                     <div className="mt-2">
                       <div className="flex items-center justify-between mb-1 text-sm">
                         <span>Growth Progress</span>
@@ -193,6 +236,7 @@ export default function FarmManagementPage() {
             ))}
           </div>
         </TabsContent>
+        
         <TabsContent value="tasks" className="space-y-4">
           <div className="flex justify-between items-center">
             <div className="space-x-2">
@@ -206,10 +250,7 @@ export default function FarmManagementPage() {
                 Completed
               </Button>
             </div>
-            <Button size="sm">
-              <Plus className="mr-2 h-4 w-4" />
-              Add Task
-            </Button>
+            <AddTaskForm onSubmit={handleAddTask} crops={crops.map(crop => ({ id: crop.id.toString(), name: crop.name }))} />
           </div>
           <Card>
             <CardHeader>
@@ -272,6 +313,7 @@ export default function FarmManagementPage() {
             </CardContent>
           </Card>
         </TabsContent>
+        
         <TabsContent value="calendar" className="space-y-4">
           <Card>
             <CardHeader>
@@ -279,15 +321,15 @@ export default function FarmManagementPage() {
               <CardDescription>View and manage your farm schedule</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex h-[500px] items-center justify-center border rounded-md p-4">
+              <div className="flex h-96 items-center justify-center border rounded-md p-4">
                 <div className="text-center">
-                  <CalendarIcon className="mx-auto h-12 w-12 text-muted-foreground" />
+                  <Calendar className="mx-auto h-12 w-12 text-muted-foreground" />
                   <h3 className="mt-4 text-lg font-medium">Farm Calendar</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     View your planting, harvesting, and task schedule in a calendar view.
                   </p>
                   <Button className="mt-4" variant="outline">
-                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    <Calendar className="mr-2 h-4 w-4" />
                     View Full Calendar
                   </Button>
                 </div>
@@ -350,20 +392,15 @@ export default function FarmManagementPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {[
-                { date: "May 18", title: "Inspect Field B for pests", crop: "Wheat" },
-                { date: "May 20", title: "Apply fertilizer", crop: "Corn" },
-                { date: "May 25", title: "Irrigation maintenance", crop: "All fields" },
-                { date: "June 1", title: "Prepare harvesting equipment", crop: "Corn" },
-              ].map((activity, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-agro-accent">
-                    <Leaf className="h-5 w-5 text-agro-primary" />
+              {tasks.filter(task => task.status === "Pending").slice(0, 4).map((task) => (
+                <div key={task.id} className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                    <Leaf className="h-5 w-5 text-blue-600" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-medium">{activity.title}</p>
+                    <p className="text-sm font-medium">{task.title}</p>
                     <p className="text-xs text-muted-foreground">
-                      {activity.date} • {activity.crop}
+                      {new Date(task.dueDate).toLocaleDateString()} • {task.crop}
                     </p>
                   </div>
                 </div>

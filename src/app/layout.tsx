@@ -5,6 +5,8 @@ import { SidebarProvider } from "@/context/sidebarContext";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { UserProvider } from "@/context/userContext";
 import { CartProvider } from "@/context/cartContext";
+import { Toaster } from "@/components/ui/sonner";
+import { MessagingProvider } from "@/context/messageContext";
 
 
 const geistSans = Geist({
@@ -35,9 +37,12 @@ export default function RootLayout({
          <UserProvider>
           <SidebarProvider>
           <CartProvider>
+          <MessagingProvider>
             <ThemeProvider attribute="class"  defaultTheme="light" enableSystem disableTransitionOnChange>
               {children}
             </ThemeProvider>
+            </MessagingProvider>
+            <Toaster />
             </CartProvider>
           </SidebarProvider>
         </UserProvider>

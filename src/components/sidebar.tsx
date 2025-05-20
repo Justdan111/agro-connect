@@ -22,11 +22,14 @@ import {
   ReceiptText,
   Box,
   Flower2,
+  MessageSquare,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useUser } from "@/context/userContext"
 import { useSidebar } from "@/context/sidebarContext"
 import { useState } from "react"
+import { Badge } from "./ui/badge"
+import { useMessaging } from "@/context/messageContext"
 
 
 // Define navigation item type
@@ -35,7 +38,7 @@ interface NavItem {
   href: string
   icon: React.ElementType
   roles?: string[] 
-// Which roles can see this item
+  showBadge?: boolean
 }
 
 interface SidebarProps {
@@ -47,8 +50,9 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
   const { isOpen, toggle } = useSidebar()
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [] = useState<{[key: string]: boolean}>({})
-  const { user } = useUser() // Get current user data including role
-  const userRole = user?.role || "guest" // Default to guest if no role is set
+  const { totalUnread } = useMessaging()
+  const { user } = useUser() 
+  const userRole = user?.role || "guest" 
 
   // Filter navigation items based on user role
   const filteredNavItems = getNavItemsByRole(userRole)
@@ -115,8 +119,27 @@ export function Sidebar({ onCollapseChange }: SidebarProps) {
                     )}
                     title={isCollapsed ? item.name : ""}
                   >
-                    <item.icon className="h-5 w-5 flex-shrink-0" />
-                    {!isCollapsed && <span className="ml-3">{item.name}</span>}
+                    <div className="relative">
+                      <item.icon
+                        className={cn(
+                          "h-5 w-5 flex-shrink-0",
+                          pathname === item.href ? "text-[#4D7C0F]" : "text-[#666666]",
+                        )}
+                      />
+                      {item.showBadge && totalUnread > 0 && (
+                        <Badge className="absolute -top-1 -right-1 px-1 min-w-[1.25rem] h-5 bg-green-400">
+                          {totalUnread}
+                        </Badge>
+                      )}
+                    </div>
+                    {!isCollapsed && (
+                      <>
+                        <span className="ml-3 flex-1">{item.name}</span>
+                        {item.showBadge && totalUnread > 0 && (
+                          <Badge className="ml-auto bg-green-400">{totalUnread}</Badge>
+                        )}
+                      </>
+                    )}
                   </Link>
                 </div>
               ))}
@@ -223,6 +246,13 @@ const allNavItems: NavItem[] = [
     roles: ["buyer"],
   },
 
+  {
+    name: "Messages",
+    href: "/messages",
+    icon: MessageSquare,
+    roles: ["farmer", "transporter", "buyer"],
+    showBadge: true,
+  },
  
   {
     name: "Settings",
