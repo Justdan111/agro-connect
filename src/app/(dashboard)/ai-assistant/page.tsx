@@ -168,7 +168,7 @@ export default function AIAssistantPage() {
                 >
                   {message.role === "assistant" && (
                     <Avatar className="h-8 w-8 mr-2">
-                      <AvatarImage src="/placeholder.svg" alt="AI" />
+                      <AvatarImage src="/images/chat.avif" alt="AI" />
                       <AvatarFallback>AI</AvatarFallback>
                     </Avatar>
                   )}
@@ -186,7 +186,7 @@ export default function AIAssistantPage() {
                   </div>
                   {message.role === "user" && (
                     <Avatar className="h-8 w-8 ml-2">
-                      <AvatarImage src="/placeholder.svg" alt="User" />
+                      <AvatarImage src="/images/chat.avif" alt="User" />
                       <AvatarFallback>U</AvatarFallback>
                     </Avatar>
                   )}
@@ -195,7 +195,7 @@ export default function AIAssistantPage() {
               {isLoading && (
                 <div className="mb-4 flex justify-start">
                   <Avatar className="h-8 w-8 mr-2">
-                    <AvatarImage src="/placeholder.svg" alt="AI" />
+                  <AvatarImage src="/images/chat.avif" alt="AI" />
                     <AvatarFallback>AI</AvatarFallback>
                   </Avatar>
                   <div className="rounded-lg p-4 bg-muted">
