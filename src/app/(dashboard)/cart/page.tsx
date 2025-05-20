@@ -3,16 +3,15 @@
 import { useState } from "react"
 import { Minus, Plus, ShoppingCart, Trash2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useCart } from "@/context/cartContext"
 import { toast } from "sonner"
 
 export default function CartPage() {
   const { items, totalItems, totalPrice, updateQuantity, removeItem, clearCart } = useCart()
-  
   const [isCheckingOut, setIsCheckingOut] = useState(false)
 
   const handleCheckout = () => {
@@ -36,7 +35,7 @@ export default function CartPage() {
           <CardContent className="pt-6 flex flex-col items-center">
             <ShoppingCart className="h-16 w-16 text-muted-foreground mb-4" />
             <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
-            <p className="text-muted-foreground mb-6">Looks like you haven&apos;t added any products to your cart yet.</p>
+            <p className="text-muted-foreground mb-6">Looks like you haven't added any products to your cart yet.</p>
             <Link href="/marketplace">
               <Button>
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -66,22 +65,21 @@ export default function CartPage() {
           {items.map((item) => (
             <Card key={item.id}>
               <div className="flex p-4">
-                <div className="w-24 h-24 mr-4">
+                <div className="w-24 h-24 mr-4 relative rounded-md overflow-hidden">
                   <Image
-                    src={item.image || '/placeholder.jpg'}
+                    src={item.image || "/placeholder.svg?height=100&width=100"}
                     alt={item.name}
-                    className="w-full h-full object-cover rounded-md"
-                    width={96}
-                    height={96}
+                    fill
+                    className="object-cover"
                   />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between">
                     <h3 className="font-semibold">{item.name}</h3>
-                    <p className="font-bold">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-bold">₦{(item.price * item.quantity).toFixed(2)}</p>
                   </div>
                   <p className="text-sm text-muted-foreground">Seller: {item.seller}</p>
-                  <p className="text-sm text-muted-foreground">${item.price.toFixed(2)} each</p>
+                  <p className="text-sm text-muted-foreground">₦{item.price.toFixed(2)} each</p>
                   <div className="flex justify-between items-center mt-2">
                     <div className="flex items-center space-x-2">
                       <Button
@@ -121,19 +119,19 @@ export default function CartPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between">
                 <span>Subtotal ({totalItems} items)</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>₦{totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
-                <span>$0.00</span>
+                <span>₦0.00</span>
               </div>
               <div className="flex justify-between">
                 <span>Tax</span>
-                <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                <span>₦{(totalPrice * 0.08).toFixed(2)}</span>
               </div>
               <div className="border-t pt-4 flex justify-between font-bold">
                 <span>Total</span>
-                <span>${(totalPrice + totalPrice * 0.08).toFixed(2)}</span>
+                <span>₦{(totalPrice + totalPrice * 0.08).toFixed(2)}</span>
               </div>
             </CardContent>
             <CardFooter>

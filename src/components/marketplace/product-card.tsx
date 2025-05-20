@@ -104,9 +104,9 @@ export function ProductCard({ product, onAddToCart, viewMode }: ProductCardProps
 
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-baseline">
-                <span className="text-xl font-bold">${product.price.toFixed(2)}</span>
+                <span className="text-xl font-bold">₦{product.price.toFixed(2)}</span>
                 {product.originalPrice && (
-                  <span className="ml-2 text-sm line-through text-gray-500">${product.originalPrice.toFixed(2)}</span>
+                  <span className="ml-2 text-sm line-through text-gray-500">₦{product.originalPrice.toFixed(2)}</span>
                 )}
                 <span className="ml-2 text-sm text-gray-500">/ {product.unit}</span>
               </div>
