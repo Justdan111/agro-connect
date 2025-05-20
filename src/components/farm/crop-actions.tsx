@@ -66,11 +66,6 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
     })
   }
 
-  const handleImageChange = (imageUrl: string | null) => {
-    if (!editCrop) return
-    const updatedCrop = { ...editCrop, image: imageUrl || undefined }
-    onUpdate(updatedCrop)
-  }
 
   return (
     <div className="flex justify-end space-x-2">
@@ -226,7 +221,7 @@ export function CropActions({ crop, onUpdate, onDelete }: CropActionsProps) {
 
             <div className="col-span-2 space-y-2">
           <Label htmlFor="cropImage">Crop Image</Label>
-          <ImageUpload defaultImage={editCrop.image} urls={[]} onChange={function (urls: string[]): void {
+          <ImageUpload defaultImage={editCrop.image} urls={[]} onChange={function (): void {
                 throw new Error("Function not implemented.")
               } } maxFiles={0} />
         </div>
