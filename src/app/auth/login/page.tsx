@@ -138,7 +138,7 @@ export default function LoginPage() {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" required />
+                    <Input id="phone" type="tel" placeholder="+(234) 913456435" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="otp">One-Time Password</Label>
