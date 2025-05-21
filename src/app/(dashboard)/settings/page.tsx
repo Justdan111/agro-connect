@@ -91,7 +91,7 @@ export default function SettingsPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone</Label>
-                  <Input id="phone" type="tel" defaultValue="+1 (555) 000-0000" />
+                  <Input id="phone" type="tel" defaultValue="+(234) 913456435" />
                 </div>
               </div>
               <div className="space-y-2">
@@ -101,8 +101,8 @@ export default function SettingsPage() {
                     <SelectValue placeholder="Select location" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="midwest">Midwest Region</SelectItem>
-                    <SelectItem value="northeast">Northeast Region</SelectItem>
+                    <SelectItem value="midwest">Eastern Region</SelectItem>
+                    <SelectItem value="northeast">Northern Region</SelectItem>
                     <SelectItem value="south">Southern Region</SelectItem>
                     <SelectItem value="west">Western Region</SelectItem>
                   </SelectContent>
