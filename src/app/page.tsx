@@ -18,7 +18,7 @@ export default function LandingPage() {
   if (!mounted) return null
 
   return (
-    <div className="flex min-h-screen flex-col bg-green-50">
+    <div className="flex min-h-screen flex-col bg-green-100">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-agro-accent to-white py-20 lg:py-32">
         <div className="container px-4 md:px-6">
