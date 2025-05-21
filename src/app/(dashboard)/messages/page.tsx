@@ -1,12 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useUser } from "@/context/userContext"
 import { useMessaging } from "@/context/messageContext"
 import ConversationsList from "@/components/messages/conversationList"
 import ChatArea from "@/components/messages/chatArea"
 import NewMessageDialog from "@/components/messages/newMessageDialog"
-
 
 export default function MessagesPage() {
   const { user } = useUser()
@@ -22,9 +21,16 @@ export default function MessagesPage() {
   } = useMessaging()
 
   const [newMessageOpen, setNewMessageOpen] = useState(false)
+  // Add a mounting state to prevent effects from running during initial render
+  const isMounted = useRef(false)
 
   // Mark conversation as read when activeConversation changes
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true
+      return
+    }
+    
     if (activeConversation?.id) {
       markAsRead(activeConversation.id)
     }
@@ -32,12 +38,15 @@ export default function MessagesPage() {
 
   // Handle sending a message
   const handleSendMessage = (message: string) => {
-    sendMessage(message)
+    if (message.trim()) {
+      sendMessage(message)
+    }
   }
 
   // Handle starting a new conversation
   const handleStartConversation = (users: { id: string; name: string; role: string; avatar?: string }[]) => {
     startNewConversation(users)
+    setNewMessageOpen(false)
   }
 
   // Handle going back to conversation list (mobile)
