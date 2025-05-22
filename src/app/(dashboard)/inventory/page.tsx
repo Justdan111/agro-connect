@@ -17,13 +17,13 @@ const inventoryItems: InventoryItem[] = [
     category: "Vegetables",
     quantity: 250,
     unit: "kg",
-    stockLevel: "high", // high, medium, low, critical
+    stockLevel: "high", 
     supplier: "Green Valley Farms",
     lastRestocked: "2023-05-10",
     expiryDate: "2023-05-25",
     price: 3.5,
     location: "Warehouse A, Section 3",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/tomato.jpeg?height=40&width=40",
   },
   {
     id: "INV-002",
@@ -37,7 +37,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-11-05",
     price: 2.25,
     location: "Warehouse B, Section 1",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/rice.jpeg?height=40&width=40",
   },
   {
     id: "INV-003",
@@ -51,7 +51,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-20",
     price: 2.0,
     location: "Warehouse A, Section 2",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/spinach.jpeg?height=40&width=40",
   },
   {
     id: "INV-004",
@@ -65,7 +65,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-28",
     price: 4.5,
     location: "Warehouse A, Section 5",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/apple.jpeg?height=40&width=40",
   },
   {
     id: "INV-005",
@@ -79,7 +79,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-10-03",
     price: 1.75,
     location: "Warehouse B, Section 2",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/wheat.webp?height=40&width=40",
   },
   {
     id: "INV-006",
@@ -93,7 +93,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-21",
     price: 3.25,
     location: "Warehouse C, Section 1",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/milk.jpg?height=40&width=40",
   },
   {
     id: "INV-007",
@@ -107,7 +107,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-22",
     price: 12.5,
     location: "Warehouse C, Section 3",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/beef.jpg?height=40&width=40",
   },
   {
     id: "INV-008",
@@ -121,7 +121,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-06-01",
     price: 2.2,
     location: "Warehouse A, Section 3",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/carrot.webp?height=40&width=40",
   },
   {
     id: "INV-009",
@@ -135,7 +135,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-27",
     price: 5.75,
     location: "Warehouse C, Section 2",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/egg.webp?height=40&width=40",
   },
   {
     id: "INV-010",
@@ -149,7 +149,7 @@ const inventoryItems: InventoryItem[] = [
     expiryDate: "2023-05-19",
     price: 18.5,
     location: "Warehouse C, Section 4",
-    image: "/placeholder.svg?height=40&width=40",
+    image: "/images/beef.jpg?height=40&width=40",
   },
 ]
 
