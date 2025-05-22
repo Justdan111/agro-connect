@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 
-type StockLevel = 'high' | 'medium' | 'low' | 'critical';
+export type StockLevel = 'high' | 'medium' | 'low' | 'critical';
 
-interface StockLevelIndicatorProps {
+export interface StockLevelIndicatorProps {
   level: StockLevel;
 }
 

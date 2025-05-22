@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button"
 import { ArrowUpDown } from "lucide-react"
 import Image from "next/image"
-import { StockLevelIndicator } from "./stock-level-indicator"
+import { StockLevel, StockLevelIndicator } from "./stock-level-indicator"
 import type { InventoryItem } from "@/types/inventory"
 
 
@@ -102,7 +102,7 @@ export function InventoryTable({ items }: InventoryTableProps) {
                 {item.quantity} {item.unit}
               </TableCell>
               <TableCell>
-                <StockLevelIndicator level={item.stockLevel} />
+                <StockLevelIndicator level={item.stockLevel as StockLevel} />
               </TableCell>
               <TableCell>{item.supplier}</TableCell>
               <TableCell>{item.expiryDate}</TableCell>
