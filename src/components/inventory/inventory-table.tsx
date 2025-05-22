@@ -8,25 +8,32 @@ import Image from "next/image"
 import { StockLevelIndicator } from "./stock-level-indicator"
 import type { InventoryItem } from "@/types/inventory"
 
+
+// Define valid sort fields
+type SortField = keyof InventoryItem
+
 interface InventoryTableProps {
   items: InventoryItem[]
 }
 
 export function InventoryTable({ items }: InventoryTableProps) {
-  const [sortField, setSortField] = useState("name")
-  const [sortDirection, setSortDirection] = useState("asc")
+  const [sortField, setSortField] = useState<SortField>("name")
+  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
 
   // Sort inventory items
   const sortedItems = [...items].sort((a, b) => {
+    const aValue = a[sortField]
+    const bValue = b[sortField]
+
     if (sortDirection === "asc") {
-      return a[sortField] > b[sortField] ? 1 : -1
+      return aValue > bValue ? 1 : -1
     } else {
-      return a[sortField] < b[sortField] ? 1 : -1
+      return aValue < bValue ? 1 : -1
     }
   })
 
   // Handle sort toggle
-  const handleSort = (field) => {
+  const handleSort = (field: SortField) => {
     if (sortField === field) {
       setSortDirection(sortDirection === "asc" ? "desc" : "asc")
     } else {
