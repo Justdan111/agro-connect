@@ -19,11 +19,11 @@ const orders = [
     supplier: "Green Valley Farms",
     paymentStatus: "paid",
     products: [
-      { name: "Organic Tomatoes", quantity: "10 kg", price: 150.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Fresh Lettuce", quantity: "5 kg", price: 100.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Carrots", quantity: "20 kg", price: 200.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Potatoes", quantity: "50 kg", price: 500.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Onions", quantity: "30 kg", price: 300.0, image: "/placeholder.svg?height=50&width=50" },
+      { name: "Organic Tomatoes", quantity: "10 kg", price: 150.0, image: "/images/tomato.jpeg?height=50&width=50" },
+      { name: "Fresh Lettuce", quantity: "5 kg", price: 100.0, image: "/images/spinach.jpeg?height=50&width=50" },
+      { name: "Carrots", quantity: "20 kg", price: 200.0, image: "/images/carrot.webp?height=50&width=50" },
+      { name: "Potatoes", quantity: "50 kg", price: 500.0, image: "/images/potato.jpg?height=50&width=50" },
+      { name: "Onions", quantity: "30 kg", price: 300.0, image: "/images/onion.jpg?height=50&width=50" },
     ],
   },
   {
@@ -35,9 +35,9 @@ const orders = [
     supplier: "Sunshine Organics",
     paymentStatus: "paid",
     products: [
-      { name: "Organic Apples", quantity: "40 kg", price: 1200.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Organic Bananas", quantity: "30 kg", price: 900.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Organic Oranges", quantity: "35 kg", price: 1100.0, image: "/placeholder.svg?height=50&width=50" },
+      { name: "Organic Apples", quantity: "40 kg", price: 1200.0, image: "/images/apple.jpeg?height=50&width=50" },
+      { name: "Organic Bananas", quantity: "30 kg", price: 900.0, image: "/images/banana.jpg?height=50&width=50" },
+      { name: "Organic Oranges", quantity: "35 kg", price: 1100.0, image: "/images/oranges.avif?height=50&width=50" },
     ],
   },
   {
@@ -49,8 +49,8 @@ const orders = [
     supplier: "Harvest Moon Co-op",
     paymentStatus: "pending",
     products: [
-      { name: "Premium Rice", quantity: "100 kg", price: 3000.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Wheat Flour", quantity: "100 kg", price: 2000.0, image: "/placeholder.svg?height=50&width=50" },
+      { name: "Premium Rice", quantity: "100 kg", price: 3000.0, image: "/images/rice.jpeg?height=50&width=50" },
+      { name: "Wheat Flour", quantity: "100 kg", price: 2000.0, image: "/images/wheat.webp?height=50&width=50" },
     ],
   },
   {
@@ -62,10 +62,10 @@ const orders = [
     supplier: "Green Valley Farms",
     paymentStatus: "refunded",
     products: [
-      { name: "Bell Peppers", quantity: "15 kg", price: 450.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Cucumbers", quantity: "20 kg", price: 400.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Zucchini", quantity: "15 kg", price: 375.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Eggplant", quantity: "25 kg", price: 575.0, image: "/placeholder.svg?height=50&width=50" },
+      { name: "Bell Peppers", quantity: "15 kg", price: 450.0, image: "/images/pepper.jpeg?height=50&width=50" },
+      { name: "Cucumbers", quantity: "20 kg", price: 400.0, image: "/images/cucumber.jpeg?height=50&width=50" },
+      { name: "Zucchini", quantity: "15 kg", price: 375.0, image: "/images/pepper.jpeg?height=50&width=50" },
+      { name: "Eggplant", quantity: "25 kg", price: 575.0, image: "/images/cucumber.jpeg?height=50&width=50" },
     ],
   },
   {
@@ -77,9 +77,9 @@ const orders = [
     supplier: "Sunshine Organics",
     paymentStatus: "paid",
     products: [
-      { name: "Organic Strawberries", quantity: "25 kg", price: 1750.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Organic Blueberries", quantity: "15 kg", price: 1500.0, image: "/placeholder.svg?height=50&width=50" },
-      { name: "Organic Raspberries", quantity: "12.5 kg", price: 1250.0, image: "/placeholder.svg?height=50&width=50" },
+      { name: "Organic Strawberries", quantity: "25 kg", price: 1750.0, image: "/images/strawberries.jpg?height=50&width=50" },
+      { name: "Organic Blueberries", quantity: "15 kg", price: 1500.0, image: "/images/strawberries.jpg?height=50&width=50" },
+      { name: "Organic Raspberries", quantity: "12.5 kg", price: 1250.0, image: "/images/strawberries.jpg?height=50&width=50" },
     ],
   },
 ]
