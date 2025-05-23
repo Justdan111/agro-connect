@@ -1,7 +1,6 @@
 "use client"
 
 import { CardDescription } from "@/components/ui/card"
-
 import { useState } from "react"
 import { Plus, Truck, Calendar, MapPin, Search, Filter, Package, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -121,7 +120,7 @@ export default function LogisticsPage() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Logistics</h1>
-          <p className="text-muted-foreground">Manage your shipments and transportation needs.</p>
+          <p className="text-muted-foreground">Manage your Shipments and Transportation Needs.</p>
         </div>
         <div className="flex items-center gap-2">
           <NewShipmentDialog />
