@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { RouteGuard } from "@/components/auth/route-guard"
@@ -14,7 +12,6 @@ import { Switch } from "@/components/ui/switch"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ImageUpload } from "@/components/ui/image-upload"
-
 import { ArrowLeft, Save, Loader2 } from "lucide-react"
 import Link from "next/link"
 import marketplaceData from "@/data/market-place-data"
