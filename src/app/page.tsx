@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, Leaf, ShoppingCart, Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { LandingNavbar } from "@/components/landing-navbar"
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false)
@@ -19,8 +20,11 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-green-100">
+      {/* Navigation */}
+      <LandingNavbar />
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-agro-accent to-white py-20 lg:py-32">
+      <section className="relative bg-gradient-to-b from-agro-accent to-white py-20 lg:py-32 pt-24 lg:pt-40">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
             <motion.div
