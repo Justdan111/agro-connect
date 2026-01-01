@@ -190,3 +190,11 @@ export const weatherForecast = [
   { day: "Wednesday", temp: "20°C", condition: "Cloudy", humidity: "65%" },
   { day: "Thursday", temp: "19°C", condition: "Light Rain", humidity: "75%" },
 ]
+
+// Farm management dashboard data
+export const farmData = {
+  crops: cropData,
+  harvests: upcomingHarvests,
+  orders: recentOrders,
+  revenue: revenueData,
+}
