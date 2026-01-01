@@ -62,7 +62,7 @@ const routeHistory = [
 ]
 
 export default function RoutePlanningPage() {
-  const [selectedRoute, setSelectedRoute] = useState(currentRoutes[0])
+  const [selectedRoute] = useState(currentRoutes[0])
 
   return (
     <div className="flex flex-col gap-6">

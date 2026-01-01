@@ -22,7 +22,7 @@ interface RouteOptimizerProps {
   selectedRoute: Route
 }
 
-export function RouteOptimizer({ routes, selectedRoute }: RouteOptimizerProps) {
+export function RouteOptimizer({ routes }: RouteOptimizerProps) {
   return (
     <Card>
       <CardHeader>
