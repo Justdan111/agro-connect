@@ -40,7 +40,7 @@ export function LandingNavbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="bg-agro-primary p-2 rounded-lg group-hover:scale-110 transition-transform">
-              <Leaf className="h-6 w-6 text-white" />
+              <Leaf className="h-6 w-6 text-green-400" />
             </div>
             <span className="text-xl md:text-2xl font-bold text-agro-primary">
               Agro<span className="text-green-600">Connect</span>
@@ -117,10 +117,10 @@ export function LandingNavbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button asChild variant="ghost" className="text-agro-primary hover:text-agro-primary hover:bg-green-50">
+            <Button asChild variant="ghost" className="text-green-600 hover:text-agro-primary hover:bg-green-50">
               <Link href="/auth/login">Sign In</Link>
             </Button>
-            <Button asChild className="bg-agro-primary hover:bg-green-600 text-white">
+            <Button asChild className="bg-green-600 hover:bg-green-700 text-white">
               <Link href="/auth/register">Get Started</Link>
             </Button>
           </div>
@@ -132,9 +132,9 @@ export function LandingNavbar() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-agro-primary" />
+              <X className="h-6 w-6 text-green-600" />
             ) : (
-              <Menu className="h-6 w-6 text-agro-primary" />
+              <Menu className="h-6 w-6 text-green-600" />
             )}
           </button>
         </div>
